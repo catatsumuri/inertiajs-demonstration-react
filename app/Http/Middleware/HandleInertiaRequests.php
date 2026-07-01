@@ -51,6 +51,9 @@ class HandleInertiaRequests extends Middleware
         ];
     }
 
+    /**
+     * @return array<string, string>
+     */
     private function installedLocales(): array
     {
         return Locales::installed()
@@ -69,12 +72,23 @@ class HandleInertiaRequests extends Middleware
         return LocaleNames::get($locale)[$locale] ?? $locale;
     }
 
+    /**
+     * @return array<string, mixed>
+     */
     private function loadLangJson(): array
     {
         $path = lang_path(app()->getLocale().'.json');
 
-        return file_exists($path)
-            ? json_decode(file_get_contents($path), true) ?? []
-            : [];
+        if (! file_exists($path)) {
+            return [];
+        }
+
+        $contents = file_get_contents($path);
+
+        if ($contents === false) {
+            return [];
+        }
+
+        return json_decode($contents, true) ?? [];
     }
 }
