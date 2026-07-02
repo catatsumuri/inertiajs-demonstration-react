@@ -1,6 +1,13 @@
 import { Link } from '@inertiajs/react';
 import { useLang } from '@erag/lang-sync-inertia/react';
-import { BookOpen, Folder, LayoutGrid, Menu, Search } from 'lucide-react';
+import {
+    BookOpen,
+    Download,
+    Folder,
+    LayoutGrid,
+    Menu,
+    Search,
+} from 'lucide-react';
 import AppLogo from '@/components/app-logo';
 import AppLogoIcon from '@/components/app-logo-icon';
 import { Breadcrumbs } from '@/components/breadcrumbs';
@@ -26,7 +33,7 @@ import {
 import LocaleSwitcher from '@/components/locale-switcher';
 import { useCurrentUrl } from '@/hooks/use-current-url';
 import { cn, toUrl } from '@/lib/utils';
-import { dashboard } from '@/routes';
+import { dashboard, fileDownload } from '@/routes';
 import type { BreadcrumbItem, NavItem } from '@/types';
 
 type Props = {
@@ -38,6 +45,11 @@ const mainNavItems: NavItem[] = [
         title: 'Dashboard',
         href: dashboard(),
         icon: LayoutGrid,
+    },
+    {
+        title: 'File Download',
+        href: fileDownload(),
+        icon: Download,
     },
 ];
 

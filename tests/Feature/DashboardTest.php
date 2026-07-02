@@ -15,4 +15,18 @@ class DashboardTest extends TestCase
 
         $response->assertOk();
     }
+
+    public function test_guests_can_visit_the_file_download_page()
+    {
+        $response = $this->get(route('file-download'));
+
+        $response->assertOk();
+    }
+
+    public function test_guests_can_download_the_favicon()
+    {
+        $response = $this->get(route('file-download.favicon'));
+
+        $response->assertDownload('favicon.ico');
+    }
 }
