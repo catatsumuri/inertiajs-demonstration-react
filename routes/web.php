@@ -16,8 +16,6 @@ Route::post('/locale', function (Request $request) {
     return back();
 })->name('locale.switch');
 
-Route::middleware(['auth', 'verified'])->group(function () {
-    Route::inertia('dashboard', 'dashboard')->name('dashboard');
-});
+Route::inertia('dashboard', 'dashboard')->name('dashboard');
 
 require __DIR__.'/settings.php';

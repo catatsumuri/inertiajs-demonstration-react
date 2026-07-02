@@ -56,13 +56,16 @@ class HandleInertiaRequests extends Middleware
      */
     private function installedLocales(): array
     {
-        return Locales::installed()
+        /** @var array<string, string> $locales */
+        $locales = Locales::installed()
             ->mapWithKeys(function ($data) {
                 $names = LocaleNames::get($data->code);
 
                 return [$data->code => $names[$data->code] ?? $data->code];
             })
             ->all();
+
+        return $locales;
     }
 
     private function currentLocaleName(): string
@@ -89,6 +92,13 @@ class HandleInertiaRequests extends Middleware
             return [];
         }
 
-        return json_decode($contents, true) ?? [];
+        $decoded = json_decode($contents, true);
+
+        if (! is_array($decoded)) {
+            return [];
+        }
+
+        /** @var array<string, mixed> $decoded */
+        return $decoded;
     }
 }
