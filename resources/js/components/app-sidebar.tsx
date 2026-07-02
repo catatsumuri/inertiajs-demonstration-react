@@ -1,5 +1,5 @@
 import { Link } from '@inertiajs/react';
-import { BookOpen, Download, FolderGit2, LayoutGrid } from 'lucide-react';
+import { BookOpen, Download, FolderGit2, LayoutGrid, Lock } from 'lucide-react';
 import AppLogo from '@/components/app-logo';
 import { NavFooter } from '@/components/nav-footer';
 import { NavMain } from '@/components/nav-main';
@@ -12,7 +12,7 @@ import {
     SidebarMenuButton,
     SidebarMenuItem,
 } from '@/components/ui/sidebar';
-import { dashboard, fileDownload } from '@/routes';
+import { dashboard, fileDownload, passwordDownload } from '@/routes';
 import type { NavItem } from '@/types';
 
 const mainNavItems: NavItem[] = [
@@ -25,6 +25,11 @@ const mainNavItems: NavItem[] = [
         title: 'File Download',
         href: fileDownload(),
         icon: Download,
+    },
+    {
+        title: 'Password Download',
+        href: passwordDownload(),
+        icon: Lock,
     },
 ];
 

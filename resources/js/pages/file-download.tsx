@@ -4,9 +4,12 @@ import { Code2, Download, FileDown } from 'lucide-react';
 import SourcePanel from '@/components/source-panel';
 import { Button } from '@/components/ui/button';
 import { fileDownload } from '@/routes';
+import { favicon } from '@/routes/file-download';
 
-const downloadExampleCode = `<Button asChild>
-    <a href={faviconDownloadUrl}>
+const downloadExampleCode = `import { favicon } from '@/routes/file-download';
+
+<Button asChild>
+    <a href={favicon.url()}>
         <Download className="size-4" />
         {__('Download :file', { file: 'favicon.ico' })}
     </a>
@@ -15,21 +18,27 @@ const downloadExampleCode = `<Button asChild>
 const backendExampleCode = `Route::get('file-download/favicon', fn (): BinaryFileResponse => response()->download(public_path('favicon.ico'), 'favicon.ico'))
     ->name('file-download.favicon');
 
-Route::get('file-download', fn (): Response => Inertia::render('file-download', [
-    'faviconDownloadUrl' => route('file-download.favicon', absolute: false),
-]))->name('file-download');`;
+Route::get('file-download', fn (): Response => Inertia::render('file-download'))
+    ->name('file-download');`;
 
-type Props = {
-    faviconDownloadUrl: string;
-};
-
-export default function FileDownload({ faviconDownloadUrl }: Props) {
+export default function FileDownload() {
     const { __ } = useLang();
     const sourceExamples = [
         {
             label: __('Frontend'),
             language: 'tsx',
             code: downloadExampleCode,
+            description: [
+                __(
+                    "It's a plain <a href>, not Inertia's <Link>, because visiting it is a real file download rather than an Inertia page visit.",
+                ),
+                __(
+                    'favicon is a Wayfinder GET route helper; only favicon.url() is needed here, since a link only needs the href string, not a method.',
+                ),
+                __(
+                    "No CSRF token is involved: GET requests are read-only, so Laravel's CSRF middleware skips verification for them entirely.",
+                ),
+            ],
         },
         {
             label: __('Backend'),
@@ -64,7 +73,7 @@ export default function FileDownload({ faviconDownloadUrl }: Props) {
                     <div className="flex flex-col gap-5 p-5">
                         <div className="rounded-lg border border-dashed border-sidebar-border/70 bg-muted/20 p-5 dark:border-sidebar-border">
                             <Button asChild className="w-fit">
-                                <a href={faviconDownloadUrl}>
+                                <a href={favicon.url()}>
                                     <Download className="size-4" />
                                     {__('Download :file', {
                                         file: 'favicon.ico',

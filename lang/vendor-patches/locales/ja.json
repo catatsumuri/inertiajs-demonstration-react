@@ -5,12 +5,22 @@
     "Copy": "コピー",
     "Download :file": ":file をダウンロード",
     "Enter recovery code": "リカバリーコードを入力",
+    "Enter the password to unlock the download.": "ダウンロードのロックを解除するには、パスワードを入力してください。",
+    "favicon is a Wayfinder GET route helper; only favicon.url() is needed here, since a link only needs the href string, not a method.": "faviconはWayfinderのGETルートヘルパーです。リンクにはhref文字列だけが必要でmethodは不要なので、ここではfavicon.url()のみを使います。",
     "File Download": "ファイルダウンロード",
     "Frontend": "フロントエンド",
+    "It's a plain <a href>, not Inertia's <Link>, because visiting it is a real file download rather than an Inertia page visit.": "アクセスするとInertiaのページ遷移ではなく実際のファイルダウンロードになるため、Inertiaの<Link>ではなく通常の<a href>です。",
+    "It's a plain HTML <form>, not Inertia's <Form> component, because a successful response is a raw file download rather than an Inertia page visit.": "成功時のレスポンスはInertiaのページ遷移ではなく生のファイルダウンロードになるため、Inertiaの<Form>コンポーネントではなく通常のHTML<form>です。",
     "Loading recovery codes": "リカバリーコードを読み込み中",
     "Navigation menu": "ナビゲーションメニュー",
+    "No CSRF token field is needed: modern browsers send Sec-Fetch-Site: same-origin on same-origin form submissions, which Laravel's CSRF middleware accepts automatically.": "CSRFトークンの隠しフィールドは不要です。モダンブラウザは同一オリジンへのフォーム送信時にSec-Fetch-Site: same-originヘッダーを自動付与し、LaravelのCSRFミドルウェアはこれを検知して自動的に検証を通します。",
+    "No CSRF token is involved: GET requests are read-only, so Laravel's CSRF middleware skips verification for them entirely.": "CSRFトークンは関係しません。GETリクエストは読み取り専用のため、LaravelのCSRFミドルウェアはそもそも検証自体をスキップします。",
     "Once your account is deleted, all of its resources and data will also be permanently deleted. Please enter your password to confirm you would like to permanently delete your account.": "アカウントを削除すると、そのすべてのリソースとデータも完全に削除されます。アカウントを完全に削除することを確認するためにパスワードを入力してください。",
+    "Password Download": "パスワードダウンロード",
     "Please proceed with caution, this cannot be undone.": "注意して進めてください。この操作は元に戻せません。",
     "Removing...": "削除中...",
-    "Source": "ソース"
+    "Source": "ソース",
+    "Unlock download": "ダウンロードのロックを解除",
+    "Validation errors arrive through the errors shared prop after Laravel redirects back to this page.": "バリデーションエラーは、Laravelがこのページにリダイレクトバックした後、errors共有propとして渡されます。",
+    "Wayfinder's attempt.form() still supplies the action and method attributes for the native form.": "Wayfinderのattempt.form()は、通常のフォーム向けにaction/method属性を提供します。"
 }
